@@ -12,13 +12,14 @@
         @showContactForm="showContactForm = !showContactForm"
         class="sticky z-20 top-0 px-32 shadow-lg"
       />
-      <router-view class="px-32"></router-view>
-      <Footer class="px-32" />
+      <router-view class="px-32 sticky z-10"></router-view>
+      <Footer class="px-32 sticky z-10" />
     </div>
 
-    <transition name="fade">
-      <div v-if="$store.getters.showBlurPane" class="fixed z-30 inset-0 bg-gray-100"></div>
-    </transition>
+    <div
+      class="fixed inset-0 bg-gray-100 transition-opacity duration-300"
+      :class="{ 'opacity-0 z-0': !$store.getters.showBlurPane, 'opacity-75 z-30': $store.getters.showBlurPane }"
+    ></div>
 
     <ContactUs
       class="fixed z-30 inset-0 transform transition-transform duration-300"
@@ -78,16 +79,6 @@ export default {
 
 .w-84 {
   width: 21rem;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
 }
 
 ::-webkit-scrollbar {
