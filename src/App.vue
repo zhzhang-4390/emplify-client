@@ -17,7 +17,11 @@
     </div>
 
     <transition name="fade">
-      <div v-if="$store.getters.showBlurPane" class="fixed z-30 inset-0 bg-gray-100"></div>
+      <div
+        v-if="$store.getters.showBlurPane"
+        class="fixed z-30 inset-0"
+        style="backdrop-filter: blur(50px)"
+      ></div>
     </transition>
 
     <ContactUs
