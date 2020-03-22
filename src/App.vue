@@ -12,8 +12,8 @@
         @showContactForm="showContactForm = !showContactForm"
         class="sticky z-20 top-0 px-32 shadow-lg"
       />
-      <router-view class="px-32"></router-view>
-      <Footer class="px-32" />
+      <router-view class="px-32 sticky z-10"></router-view>
+      <Footer class="px-32 sticky z-10" />
     </div>
 
     <transition name="fade">
@@ -82,16 +82,6 @@ export default {
 
 .w-84 {
   width: 21rem;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
 }
 
 ::-webkit-scrollbar {
