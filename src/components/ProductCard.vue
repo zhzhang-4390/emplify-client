@@ -1,5 +1,7 @@
 <template>
-  <div class="p-1 rounded-lg border border-gray-400 relative">
+  <div
+    class="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300 relative"
+  >
     <img :src="product.frontImage" class="h-56 w-84 object-cover rounded-t-lg" />
     <div
       class="absolute -mt-8 ml-4 h-16 w-16 rounded-full bg-teal-400 border-4 border-white flex items-center justify-center"
