@@ -6,9 +6,7 @@
       class="w-84 flex-shrink-0"
       :class="{ 'ml-10': index !== 0 }"
     >
-      <router-link
-        :to="{ path: '/product-detail', query: { name: product.name } }"
-      >
+      <router-link :to="{ path: '/product-detail', query: { name: product.name } }">
         <ProductCard :product="product" />
       </router-link>
 
@@ -19,9 +17,7 @@
           viewBox="0 0 20 20"
           class="h-6 w-6 fill-current text-gray-400 hover:text-gray-600 transition-colors duration-300 cursor-pointer"
         >
-          <path
-            d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"
-          />
+          <path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z" />
         </svg>
       </div>
     </div>

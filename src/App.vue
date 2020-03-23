@@ -26,19 +26,28 @@
 
     <ContactUs
       class="fixed z-30 inset-0 transform transition-transform duration-300"
-      :class="{ 'scale-0': !$store.getters.showContactForm, 'scale-100': $store.getters.showContactForm }"
+      :class="{
+        'scale-0': !$store.getters.showContactForm,
+        'scale-100': $store.getters.showContactForm
+      }"
       style="transform-origin: 78% 7%"
     />
 
     <SignIn
       class="fixed z-30 inset-0 transform transition-transform duration-300"
-      :class="{ 'scale-0': !$store.getters.showSignInForm, 'scale-100': $store.getters.showSignInForm }"
+      :class="{
+        'scale-0': !$store.getters.showSignInForm,
+        'scale-100': $store.getters.showSignInForm
+      }"
       style="transform-origin: 88% 7%"
     />
 
     <Notification
       class="fixed z-40 bottom-0 transform transition-transform duration-300"
-      :class="{ 'scale-0': !$store.getters.getNotification, 'scale-100': $store.getters.getNotification }"
+      :class="{
+        'scale-0': !$store.getters.getNotification,
+        'scale-100': $store.getters.getNotification
+      }"
       style="transform-origin: 50% 25%"
     />
   </div>
