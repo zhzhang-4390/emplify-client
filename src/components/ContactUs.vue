@@ -1,10 +1,15 @@
 <template>
-  <div class="flex flex-col items-center justify-center">
+  <div
+    @keyup.esc="$store.dispatch('hideContactForm')"
+    tabindex="0"
+    class="flex flex-col items-center justify-center"
+  >
     <CloseButton @close="$store.dispatch('hideContactForm')" class="w-3/5" />
     <form class="p-12 w-3/5 bg-white rounded-b-lg shadow-xl">
       <div class="flex">
         <input
           v-model="company"
+          ref="firstInput"
           type="text"
           placeholder="Company & Department"
           required
@@ -75,6 +80,10 @@ export default {
       requirement: null,
       role: "buyer"
     };
+  },
+
+  mounted() {
+    this.$refs.firstInput.focus();
   },
 
   methods: {

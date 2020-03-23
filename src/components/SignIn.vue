@@ -1,5 +1,9 @@
 <template>
-  <div class="flex flex-col items-center justify-center">
+  <div
+    @keyup.esc="$store.dispatch('hideSignInForm')"
+    tabindex="0"
+    class="flex flex-col items-center justify-center"
+  >
     <CloseButton @close="$store.dispatch('hideSignInForm')" class="w-1/3" />
     <form class="py-12 px-8 w-1/3 rounded-b-lg shadow-lg bg-white">
       <input
@@ -82,6 +86,10 @@ export default {
       password: null,
       role: "buyer"
     };
+  },
+
+  mounted() {
+    this.$refs.email.focus();
   },
 
   methods: {

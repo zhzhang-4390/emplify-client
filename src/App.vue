@@ -24,32 +24,29 @@
       ></div>
     </transition>
 
-    <ContactUs
-      class="fixed z-30 inset-0 transform transition-transform duration-300"
-      :class="{
-        'scale-0': !$store.getters.showContactForm,
-        'scale-100': $store.getters.showContactForm
-      }"
-      style="transform-origin: 78% 7%"
-    />
+    <transition name="scale">
+      <ContactUs
+        v-if="$store.getters.showContactForm"
+        class="fixed z-30 inset-0"
+        style="transform-origin: 78% 7%"
+      />
+    </transition>
 
-    <SignIn
-      class="fixed z-30 inset-0 transform transition-transform duration-300"
-      :class="{
-        'scale-0': !$store.getters.showSignInForm,
-        'scale-100': $store.getters.showSignInForm
-      }"
-      style="transform-origin: 88% 7%"
-    />
+    <transition name="scale">
+      <SignIn
+        v-if="$store.getters.showSignInForm"
+        class="fixed z-30 inset-0"
+        style="transform-origin: 88% 7%"
+      />
+    </transition>
 
-    <Notification
-      class="fixed z-40 bottom-0 transform transition-transform duration-300"
-      :class="{
-        'scale-0': !$store.getters.getNotification,
-        'scale-100': $store.getters.getNotification
-      }"
-      style="transform-origin: 50% 25%"
-    />
+    <transition name="scale">
+      <Notification
+        v-if="$store.getters.getNotification"
+        class="fixed z-40 bottom-0"
+        style="transform-origin: 50% 25%"
+      />
+    </transition>
   </div>
 </template>
 
@@ -98,6 +95,15 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s;
+}
+
+.scale-enter,
+.scale-leave-to {
+  transform: scale(0);
+}
+.scale-enter-active,
+.scale-leave-active {
+  transition: transform 0.3s;
 }
 
 ::-webkit-scrollbar {
