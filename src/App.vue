@@ -84,19 +84,25 @@ export default {
 .h-96 {
   height: 24rem;
 }
-
 .h-124 {
   height: 31rem;
 }
-
 .w-84 {
   width: 21rem;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
-
 * {
   -ms-overflow-style: none;
 }
