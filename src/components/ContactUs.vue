@@ -12,14 +12,12 @@
           ref="firstInput"
           type="text"
           placeholder="Company & Department"
-          required
           class="py-2 w-1/2 outline-none border-b focus:border-teal-400"
         />
         <input
           v-model="name"
           type="text"
           placeholder="Your Name"
-          required
           class="ml-8 py-2 w-1/2 outline-none border-b focus:border-teal-400"
         />
       </div>
@@ -28,7 +26,6 @@
           v-model="email"
           type="text"
           placeholder="Email"
-          required
           class="py-2 w-1/2 outline-none border-b focus:border-teal-400"
         />
         <input
