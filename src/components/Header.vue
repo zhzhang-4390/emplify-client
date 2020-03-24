@@ -69,13 +69,19 @@
           class="py-2 px-6 rounded-full border-2 border-teal-400 text-lg font-semibold hover:text-gray-600 hover:bg-gray-100 cursor-pointer"
         >Sign In</div>
 
-        <ul
-          v-show="showAccountDropdown"
-          class="mt-4 absolute z-20 right-0 w-48 bg-white rounded-lg shadow-lg"
-        >
-          <li @click="signOut()" class="p-4 rounded-t-lg hover:bg-teal-300 cursor-pointer">Sign Out</li>
-          <li class="p-4 rounded-b-lg hover:bg-teal-300 cursor-pointer">Change Password</li>
-        </ul>
+        <transition name="scale">
+          <ul
+            v-show="showAccountDropdown"
+            class="mt-4 absolute z-20 right-0 w-48 bg-white rounded-lg shadow-lg"
+            style="transform-origin: 100% 0%"
+          >
+            <li
+              @click="signOut()"
+              class="p-4 rounded-t-lg hover:bg-teal-300 cursor-pointer"
+            >Sign Out</li>
+            <li class="p-4 rounded-b-lg hover:bg-teal-300 cursor-pointer">Change Password</li>
+          </ul>
+        </transition>
       </li>
     </ul>
   </header>
