@@ -8,7 +8,7 @@
     >
       <span class="font-semibold text-white">${{ product.price }}</span>
     </div>
-    <div class="pt-10 px-4 h-64 bg-white rounded-b-lg leading-relaxed">
+    <div class="pt-10 px-4 h-64 bg-gray-200 rounded-b-lg leading-relaxed">
       <h4 class="text-lg font-semibold text-gray-700">{{ product.name }}</h4>
       <p class="mt-2 h-40 text-gray-600 text-justify overflow-y-scroll">{{ product.description }}</p>
     </div>

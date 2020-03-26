@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="py-10 border-b-2 border-gray-400 flex">
+    <div class="py-10 border-b-2 border-gray-600 flex">
       <ul class="py-10 px-5 w-64 bg-gray-300">
         <router-link
           to="/admin/users"

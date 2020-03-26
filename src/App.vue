@@ -1,19 +1,9 @@
 <template>
   <div id="app" class="relative">
-    <!-- <div class="h-full w-full">
-      <img src="./assets/wallpaper.jpg" class="object-cover absolute" />
-      <div
-        class="h-screen w-full absolute"
-        style="background: linear-gradient(to bottom, #edf2f7, transparent, #edf2f7)"
-      ></div>
-    </div>-->
-    <div>
-      <Header
-        @showContactForm="showContactForm = !showContactForm"
-        class="sticky z-20 top-0 px-32 shadow-lg"
-      />
-      <router-view class="px-32 sticky z-10"></router-view>
-      <Footer class="px-32 sticky z-10" />
+    <div class="sticky z-10 px-16">
+      <Header @showContactForm="showContactForm = !showContactForm" />
+      <router-view></router-view>
+      <Footer />
     </div>
 
     <transition name="fade">

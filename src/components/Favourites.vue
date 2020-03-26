@@ -1,5 +1,5 @@
 <template>
-  <div class="py-10 flex overflow-x-auto border-b-2 border-gray-400">
+  <div class="py-10 flex overflow-x-auto border-b-2 border-gray-600">
     <div
       v-for="(product, index) in products"
       :key="index"

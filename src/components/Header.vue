@@ -1,5 +1,5 @@
 <template>
-  <header class="py-4 bg-gray-200 flex justify-between items-center">
+  <header class="py-4 flex justify-between items-center">
     <router-link to="/" class="flex items-center">
       <img src="../assets/logo.png" class="h-12 w-12" />
       <h1 class="ml-2 text-2xl font-bold text-gray-800 font-serif">Emplify</h1>
@@ -66,7 +66,7 @@
         <div
           v-else
           @click="$store.dispatch('showSignInForm')"
-          class="py-2 px-6 rounded-full border-2 border-teal-400 text-lg font-semibold hover:text-gray-600 hover:bg-gray-100 cursor-pointer"
+          class="py-2 px-6 rounded-full border-2 border-gray-700 text-lg font-semibold hover:bg-gray-100 cursor-pointer"
         >Sign In</div>
 
         <transition name="scale">
