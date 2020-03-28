@@ -10,7 +10,7 @@
       <div
         ref="line"
         class="h-124 w-1 rounded-full opacity-0"
-        :style="{ background: lineChangeColor ? 'linear-gradient(0deg, rgba(219,129,230,0.5) 0%, rgba(129,230,217,0.5) 50%, rgba(0,177,255,0.5) 100%)' : '#718096' }"
+        :style="{ 'background': lineChangeColor ? 'linear-gradient(0deg, rgba(219,129,230,0.5) 0%, rgba(129,230,217,0.5) 50%, rgba(0,177,255,0.5) 100%)' : 'rgba(255, 255, 255, 0)', 'box-shadow': lineChangeColor ? 'none' : '0px 0px 1rem 5px #f7fafc' }"
       ></div>
 
       <div
