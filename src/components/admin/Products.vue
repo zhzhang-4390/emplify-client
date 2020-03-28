@@ -11,10 +11,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr
+      <router-link
         v-for="(product, index) in products"
         :key="index"
+        :to="{ path: '/upload-product', query: { name: product.name } }"
+        class="hover:bg-gray-400"
         :class="{ 'bg-gray-200': index % 2 !== 0 }"
+        style="display: table-row"
       >
         <td class="py-2 px-4 border-2 text-sm">{{ product.name }}</td>
         <td class="py-2 px-4 border-2 text-sm">{{ product.category }}</td>
@@ -22,7 +25,7 @@
         <td class="py-2 px-4 border-2 text-sm">$ {{ product.price }}</td>
         <td class="py-2 px-4 border-2 text-sm">{{ product.owner.email }}</td>
         <td class="py-2 px-4 border-2 text-sm">{{ product.updatedAt }}</td>
-      </tr>
+      </router-link>
     </tbody>
   </table>
 </template>
