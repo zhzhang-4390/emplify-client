@@ -77,6 +77,15 @@ export default {
 .w-84 {
   width: 21rem;
 }
+.mt-36 {
+  margin-top: 9rem;
+}
+.h-140 {
+  height: 35rem;
+}
+.w-140 {
+  width: 35rem;
+}
 
 .fade-enter,
 .fade-leave-to {

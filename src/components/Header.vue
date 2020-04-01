@@ -1,8 +1,8 @@
 <template>
   <header class="py-4 flex justify-between items-center">
     <router-link to="/" class="flex items-center">
-      <img src="../assets/logo.png" class="h-12 w-12" />
-      <h1 class="ml-2 text-2xl font-bold text-gray-800 font-serif">Emplify</h1>
+      <div class="h-8 w-8 rounded-lg border-2 border-black transform rotate-45"></div>
+      <h1 class="ml-4 text-2xl font-bold text-gray-800 font-serif">Emplify</h1>
       <h5 class="self-end ml-2 text-gray-600">Beta</h5>
     </router-link>
     <ul class="flex items-center">
@@ -60,8 +60,12 @@
         <div
           v-if="$store.getters.getUser"
           @click="showAccountDropdown = !showAccountDropdown"
-          class="h-12 w-12 rounded-full bg-teal-400 hover:bg-teal-300 transition-colors duration-300 border-2 border-white cursor-pointer flex items-center justify-center text-xl text-white"
-        >{{ $store.getters.getUser.email.charAt(0).toUpperCase() }}</div>
+          class="h-10 w-10 rounded-lg hover:bg-gray-200 transition-colors duration-300 border-2 border-black cursor-pointer flex items-center justify-center"
+        >
+          <span
+            class="text-xl font-semibold text-black"
+          >{{ $store.getters.getUser.email.charAt(0).toUpperCase() }}</span>
+        </div>
 
         <div
           v-else

@@ -1,15 +1,7 @@
 <template>
   <div>
-    <section class="h-screen w-full flex">
-      <div class="mt-32 w-5/12 leading-loose">
-        <div class="text-5xl font-semibold text-gray-600">One-Stop Solution</div>
-        <div class="text-3xl font-semibold text-gray-600">for</div>
-        <div class="text-5xl font-semibold text-gray-600">Corporate Team Building</div>
-      </div>
-
-      <div class="mt-8 w-7/12">
-        <Animation />
-      </div>
+    <section class="h-screen w-full">
+      <Animation class="mt-36" />
     </section>
 
     <section
