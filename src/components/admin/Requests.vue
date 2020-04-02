@@ -23,7 +23,7 @@
         <td class="py-2 px-4 border-2 text-sm">{{ request.contactNumber }}</td>
         <td class="py-2 px-4 border-2 text-sm">{{ request.requirement }}</td>
         <td class="py-2 px-4 border-2 text-sm">{{ request.role }}</td>
-        <td class="py-2 px-4 border-2 text-sm">{{ request.createdAt }}</td>
+        <td class="py-2 px-4 border-2 text-sm">{{ new Date(request.createdAt).toLocaleString() }}</td>
       </tr>
     </tbody>
   </table>

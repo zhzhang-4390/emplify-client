@@ -65,8 +65,8 @@
         <tr v-for="(user, index) in users" :key="index" :class="{ 'bg-gray-200': index % 2 !== 0 }">
           <td class="py-2 px-4 border-2">{{ user.email }}</td>
           <td class="py-2 px-4 border-2">{{ user.role }}</td>
-          <td class="py-2 px-4 border-2">{{ user.createdAt }}</td>
-          <td class="py-2 px-4 border-2">{{ user.updatedAt }}</td>
+          <td class="py-2 px-4 border-2">{{ new Date(user.createdAt).toLocaleString() }}</td>
+          <td class="py-2 px-4 border-2">{{ new Date(user.updatedAt).toLocaleString() }}</td>
         </tr>
       </tbody>
     </table>
