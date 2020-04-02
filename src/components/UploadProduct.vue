@@ -19,7 +19,7 @@
               v-model="name"
               type="text"
               placeholder="Product Name"
-              class="w-40 text-xl font-semibold text-gray-700 focus:outline-none"
+              class="w-40 text-xl font-semibold text-gray-700 outline-none"
             />
             <div>
               <span class="text-xl font-semibold text-gray-600">$</span>
@@ -27,7 +27,7 @@
                 v-model="price"
                 type="number"
                 placeholder="Price"
-                class="ml-2 w-12 text-xl font-semibold text-gray-600 focus:outline-none"
+                class="ml-2 w-12 text-xl font-semibold text-gray-600 outline-none"
               />
               <span class="ml-2 text-gray-600">/pax</span>
             </div>
@@ -35,7 +35,7 @@
 
           <select
             v-model="category"
-            class="mt-4 pl-2 text-sm text-gray-600 font-semibold border-l-4 border-teal-400 focus:outline-none"
+            class="mt-4 pl-2 text-sm text-gray-600 font-semibold border-l-4 border-teal-400 outline-none"
           >
             <option
               v-for="category in $store.getters.getCategories"
@@ -47,7 +47,7 @@
           <textarea
             v-model="description"
             placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolores quasi est rem ullam. Consequuntur dolor quas aliquam, doloremque iusto quidem officia cum nisi quam asperiores repellat, laborum, id minima."
-            class="mt-4 h-full text-gray-600 text-justify overflow-y-auto focus:outline-none"
+            class="mt-4 h-full text-gray-600 text-justify overflow-y-auto outline-none"
           />
 
           <div class="mt-8 flex items-center justify-end">
