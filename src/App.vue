@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="relative">
     <div class="sticky z-10 px-16">
-      <Header @showContactForm="showContactForm = !showContactForm" />
+      <Header />
       <router-view></router-view>
       <Footer />
     </div>
