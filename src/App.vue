@@ -54,6 +54,10 @@ export default {
     ContactUs,
     SignIn,
     Notification
+  },
+
+  beforeMount() {
+    this.$store.dispatch("trySignOut");
   }
 };
 </script>

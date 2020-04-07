@@ -11,23 +11,23 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [
     createPersistedState({
-      storage: window.sessionStorage
-    })
+      storage: window.localStorage,
+    }),
   ],
 
   modules: {
     user,
     notification,
-    floatingForm
+    floatingForm,
   },
 
   state: {
-    categories: ["Team Building Experience", "CSR Experience", "Hotels"]
+    categories: ["Team Building Experience", "CSR Experience", "Hotels"],
   },
 
   getters: {
     getCategories(state) {
       return state.categories;
-    }
-  }
+    },
+  },
 });
