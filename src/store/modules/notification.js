@@ -1,12 +1,12 @@
 export default {
   state: {
-    notification: null
+    notification: null,
   },
 
   mutations: {
     setNotification(state, notification) {
       state.notification = notification;
-    }
+    },
   },
 
   actions: {
@@ -17,13 +17,13 @@ export default {
     pushBadNews(context, message) {
       context.commit("setNotification", {
         isGoodNews: false,
-        message: message
+        message: message,
       });
     },
 
     dismissNotification(context) {
       context.commit("setNotification", null);
-    }
+    },
   },
 
   getters: {
@@ -37,6 +37,6 @@ export default {
 
     getMessage(state) {
       return state.notification ? state.notification.message : null;
-    }
-  }
+    },
+  },
 };

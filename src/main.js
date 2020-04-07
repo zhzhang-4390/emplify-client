@@ -21,27 +21,27 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      component: ProductShelf
+      component: ProductShelf,
     },
     {
       path: "/product-detail",
-      component: ProductDetail
+      component: ProductDetail,
     },
     {
       path: "/upload-product",
-      component: UploadProduct
+      component: UploadProduct,
     },
     {
       path: "/my-products",
-      component: MyProducts
+      component: MyProducts,
     },
     {
       path: "/favourites",
-      component: Favourites
+      component: Favourites,
     },
     {
       path: "/shopping-cart",
-      component: ShoppingCart
+      component: ShoppingCart,
     },
     {
       path: "/admin",
@@ -49,15 +49,15 @@ const router = new VueRouter({
       children: [
         { path: "users", component: Users },
         { path: "products", component: Products },
-        { path: "requests", component: Requests }
-      ]
-    }
+        { path: "requests", component: Requests },
+      ],
+    },
   ],
-  mode: "history"
+  mode: "history",
 });
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

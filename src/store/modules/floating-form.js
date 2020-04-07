@@ -1,7 +1,7 @@
 export default {
   state: {
     showSignInForm: false,
-    showContactForm: false
+    showContactForm: false,
   },
 
   mutations: {
@@ -11,7 +11,7 @@ export default {
 
     toggleContactForm(state, show) {
       state.showContactForm = show;
-    }
+    },
   },
 
   actions: {
@@ -29,7 +29,7 @@ export default {
 
     hideContactForm(context) {
       context.commit("toggleContactForm", false);
-    }
+    },
   },
 
   getters: {
@@ -43,6 +43,6 @@ export default {
 
     showBlurPane(state) {
       return state.showSignInForm || state.showContactForm;
-    }
-  }
+    },
+  },
 };
