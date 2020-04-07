@@ -54,13 +54,6 @@ export default {
     ContactUs,
     SignIn,
     Notification
-  },
-
-  data() {
-    return {
-      show: false,
-      showContactForm: false
-    };
   }
 };
 </script>
