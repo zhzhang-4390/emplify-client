@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="h-screen w-full">
-      <Animation class="mt-36" />
+      <Animation style="margin-top: 10rem" />
     </section>
 
     <section

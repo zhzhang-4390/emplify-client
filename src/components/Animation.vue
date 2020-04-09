@@ -22,8 +22,8 @@
     <div class="absolute inset-0 flex items-center justify-center">
       <div
         ref="circle"
-        class="h-140 w-140 rounded-full opacity-0"
-        style="box-shadow: inset 16px 0px 16px 0px rgba(219,129,230,0.3), inset -16px 0px 16px 5px rgba(0,177,255,0.3)"
+        class="rounded-full opacity-0"
+        style="height: 35rem; width: 35rem; box-shadow: inset 16px 0px 16px 0px rgba(219,129,230,0.3), inset -16px 0px 16px 5px rgba(0,177,255,0.3)"
       ></div>
     </div>
   </div>
