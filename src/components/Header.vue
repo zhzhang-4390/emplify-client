@@ -1,7 +1,9 @@
 <template>
   <header class="py-4 flex justify-between items-center">
     <router-link to="/" class="flex items-center">
-      <div class="h-8 w-8 rounded-lg border-2 border-black transform rotate-45"></div>
+      <div
+        class="h-8 w-8 rounded-lg border-2 border-black transform rotate-45"
+      ></div>
       <h1 class="ml-4 text-2xl font-bold text-gray-800 font-serif">Emplify</h1>
       <h5 class="self-end ml-2 text-gray-600">Beta</h5>
     </router-link>
@@ -20,7 +22,9 @@
           <div
             v-if="$store.getters.getShoppingCartSize !== 0"
             class="ml-2 h-6 w-6 rounded-full bg-teal-400 flex items-center justify-center text-white"
-          >{{ $store.getters.getShoppingCartSize }}</div>
+          >
+            {{ $store.getters.getShoppingCartSize }}
+          </div>
         </router-link>
       </li>
 
@@ -28,32 +32,39 @@
         <router-link
           to="/favourites"
           class="text-lg font-semibold hover:text-gray-600 cursor-pointer"
-        >Favourites</router-link>
+          >Favourites</router-link
+        >
       </li>
 
       <li v-if="$store.getters.isBuyer" class="ml-16">
         <router-link
           to="/orders"
           class="text-lg font-semibold hover:text-gray-600 cursor-pointer"
-        >Orders</router-link>
+          >Orders</router-link
+        >
       </li>
 
       <li v-if="$store.getters.isSeller" class="ml-16">
         <router-link
           to="/my-products"
           class="text-lg font-semibold hover:text-gray-600 cursor-pointer"
-        >My Products</router-link>
+          >My Products</router-link
+        >
       </li>
 
       <li v-if="$store.getters.getUser" class="ml-16">
-        <a class="text-lg font-semibold hover:text-gray-600 cursor-pointer">Chats</a>
+        <a class="text-lg font-semibold hover:text-gray-600 cursor-pointer"
+          >Chats</a
+        >
       </li>
 
       <li class="ml-16">
         <div
           @click="$store.dispatch('showContactForm')"
           class="text-lg font-semibold hover:text-gray-600 cursor-pointer"
-        >Contact Us</div>
+        >
+          Contact Us
+        </div>
       </li>
 
       <li class="ml-16 relative">
@@ -62,16 +73,18 @@
           @click="showAccountDropdown = !showAccountDropdown"
           class="h-10 w-10 rounded-lg hover:bg-gray-200 transition-colors duration-300 border-2 border-black cursor-pointer flex items-center justify-center"
         >
-          <span
-            class="text-xl font-semibold text-black"
-          >{{ $store.getters.getUser.email.charAt(0).toUpperCase() }}</span>
+          <span class="text-xl font-semibold text-black">{{
+            $store.getters.getUser.email.charAt(0).toUpperCase()
+          }}</span>
         </div>
 
         <div
           v-else
           @click="$store.dispatch('showSignInForm')"
           class="py-2 px-6 rounded-full border-2 border-gray-700 text-lg font-semibold hover:bg-gray-100 cursor-pointer"
-        >Sign In</div>
+        >
+          Sign In
+        </div>
 
         <transition name="scale">
           <ul
@@ -82,8 +95,16 @@
             <li
               @click="signOut()"
               class="p-4 rounded-t-lg hover:bg-teal-300 cursor-pointer"
-            >Sign Out</li>
-            <li class="p-4 rounded-b-lg hover:bg-teal-300 cursor-pointer">Change Password</li>
+            >
+              Sign Out
+            </li>
+
+            <li
+              @click="routeToChangePassword()"
+              class="p-4 rounded-b-lg hover:bg-teal-300 cursor-pointer"
+            >
+              Change Password
+            </li>
           </ul>
         </transition>
       </li>
@@ -97,14 +118,14 @@ import axios from "axios";
 export default {
   data() {
     return {
-      showAccountDropdown: false
+      showAccountDropdown: false,
     };
   },
 
   methods: {
     signOut() {
       this.showAccountDropdown = !this.showAccountDropdown;
-      axios.post("/userService/signOut").then(res => {
+      axios.post("/userService/signOut").then((res) => {
         if (res.status === 200) {
           this.$store.dispatch("signOut");
           this.$store.dispatch("pushGoodNews", "Signed out successfully!");
@@ -115,7 +136,12 @@ export default {
           this.$store.dispatch("pushBadNews", "Failed to sign out");
         }
       });
-    }
-  }
+    },
+
+    routeToChangePassword() {
+      this.showAccountDropdown = false;
+      this.$router.push("/change-password");
+    },
+  },
 };
 </script>

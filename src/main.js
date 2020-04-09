@@ -10,6 +10,7 @@ import UploadProduct from "./components/UploadProduct.vue";
 import MyProducts from "./components/MyProducts.vue";
 import Favourites from "./components/Favourites.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
+import ChangePassword from "./components/ChangePassword.vue";
 import Admin from "./components/Admin.vue";
 import Users from "./components/admin/Users.vue";
 import Products from "./components/admin/Products.vue";
@@ -42,6 +43,10 @@ const router = new VueRouter({
     {
       path: "/shopping-cart",
       component: ShoppingCart,
+    },
+    {
+      path: "/change-password",
+      component: ChangePassword,
     },
     {
       path: "/admin",
