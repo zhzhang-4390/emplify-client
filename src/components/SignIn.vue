@@ -26,7 +26,9 @@
       <div v-if="!signInMode">
         <div class="mt-8 flex items-center">
           <input v-model="role" type="radio" value="buyer" class="h-6 w-6" />
-          <span class="ml-4">I'm looking for Team-Building / CSR activites</span>
+          <span class="ml-4"
+            >I'm looking for Team-Building / CSR activites</span
+          >
         </div>
         <div class="mt-4 flex items-center">
           <input v-model="role" type="radio" value="seller" class="h-6 w-6" />
@@ -39,9 +41,7 @@
         class="mt-8 py-4 w-full rounded-full border-2 border-teal-300 cursor-pointer hover:bg-gray-200 transition-colors duration-300 flex items-center justify-center"
       >
         <span class="text-lg font-semibold text-gray-700">
-          {{
-          signInMode ? "Sign In" : "Sign Up"
-          }}
+          {{ signInMode ? "Sign In" : "Sign Up" }}
         </span>
         <svg
           ref="cog"
@@ -57,11 +57,19 @@
 
       <div v-if="signInMode" class="mt-6 flex justify-between">
         <span class="hover:text-gray-600 cursor-pointer">Forgot Password?</span>
-        <span @click="signInMode = false" class="hover:text-gray-600 cursor-pointer">Sign Up</span>
+        <span
+          @click="signInMode = false"
+          class="hover:text-gray-600 cursor-pointer"
+          >Sign Up</span
+        >
       </div>
 
       <div v-if="!signInMode" class="mt-6 flex justify-end">
-        <span @click="signInMode = true" class="hover:text-gray-600 cursor-pointer">Sign In</span>
+        <span
+          @click="signInMode = true"
+          class="hover:text-gray-600 cursor-pointer"
+          >Sign In</span
+        >
       </div>
     </form>
   </div>
@@ -75,7 +83,7 @@ import CloseButton from "./CloseButton.vue";
 
 export default {
   components: {
-    CloseButton
+    CloseButton,
   },
 
   data() {
@@ -84,7 +92,7 @@ export default {
 
       email: null,
       password: null,
-      role: "buyer"
+      role: "buyer",
     };
   },
 
@@ -100,9 +108,9 @@ export default {
       axios
         .post("/userService/signIn", {
           email: this.email,
-          password: this.password
+          password: this.password,
         })
-        .then(res => {
+        .then((res) => {
           rotateCog.pause();
 
           if (res.status === 200) {
@@ -115,7 +123,7 @@ export default {
             }
           }
         })
-        .catch(err => {
+        .catch((err) => {
           rotateCog.pause();
           this.$store.dispatch("pushBadNews", "Wrong email or password");
         });
@@ -126,9 +134,9 @@ export default {
         .post("/userService/signUp", {
           email: this.email,
           password: this.password,
-          role: this.role
+          role: this.role,
         })
-        .then(res => {
+        .then((res) => {
           if (res.status === 201) {
             this.$store.dispatch("pushGoodNews", "Signed up successfully!");
             this.$store.dispatch("hideSignInForm");
@@ -142,9 +150,9 @@ export default {
         rotate: "1turn",
         easing: "linear",
         duration: 1000,
-        loop: true
+        loop: true,
       });
-    }
-  }
+    },
+  },
 };
 </script>

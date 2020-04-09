@@ -3,7 +3,10 @@
     <div class="flex">
       <section class="w-1/3 rounded-lg">
         <div class="flex items-center justify-center relative">
-          <img :src="frontImagePreview" class="h-64 w-full object-cover rounded-t-lg opacity-50" />
+          <img
+            :src="frontImagePreview"
+            class="h-64 w-full object-cover rounded-t-lg opacity-50"
+          />
           <input
             type="file"
             ref="frontImage"
@@ -13,7 +16,9 @@
           />
         </div>
 
-        <div class="p-6 h-96 bg-white flex flex-col justify-between rounded-b-lg leading-loose">
+        <div
+          class="p-6 h-96 bg-white flex flex-col justify-between rounded-b-lg leading-loose"
+        >
           <div class="flex justify-between">
             <input
               v-model="name"
@@ -41,7 +46,8 @@
               v-for="category in $store.getters.getCategories"
               :key="category"
               :value="category"
-            >{{ category }}</option>
+              >{{ category }}</option
+            >
           </select>
 
           <textarea
@@ -54,7 +60,9 @@
             <div
               @click="uploadProduct()"
               class="py-1 px-4 rounded-lg bg-teal-400 hover:bg-teal-300 cursor-pointer flex justify-center font-semibold text-white"
-            >Upload Product</div>
+            >
+              Upload Product
+            </div>
           </div>
         </div>
       </section>
@@ -71,7 +79,7 @@
               :src="preview"
               class="flex-shrink-0 h-124 w-full rounded-lg object-cover opacity-50 transform transition-transform duration-300"
               :style="{
-                '--transform-translate-x': `-${selectedImageIndex * 100}%`
+                '--transform-translate-x': `-${selectedImageIndex * 100}%`,
               }"
             />
             <div
@@ -144,7 +152,7 @@ export default {
       details: "",
       frontImage: null,
       images: [],
-      imagesToRemove: []
+      imagesToRemove: [],
     };
   },
 
@@ -152,7 +160,7 @@ export default {
     if (this.$route.query.name) {
       axios
         .get(`/productService/getProductByName?name=${this.$route.query.name}`)
-        .then(res => {
+        .then((res) => {
           this._id = res.data._id;
           this.name = res.data.name;
           this.description = res.data.description;
@@ -174,9 +182,9 @@ export default {
     },
 
     addImages() {
-      this.$refs.images.files.forEach(image => {
+      this.$refs.images.files.forEach((image) => {
         if (
-          this.images.find(existingImage => existingImage.name === image.name)
+          this.images.find((existingImage) => existingImage.name === image.name)
         ) {
           alert(`${image.name} has already been uploaded`);
           return;
@@ -229,9 +237,9 @@ export default {
       formData.append("details", JSON.stringify(this.details.split("\n")));
       formData.append("imagesToRemove", JSON.stringify(this.imagesToRemove));
       formData.append("frontImage", this.frontImage);
-      this.images.forEach(image => formData.append("images", image));
+      this.images.forEach((image) => formData.append("images", image));
 
-      axios.post("/productService/addOrUpdateProduct", formData).then(res => {
+      axios.post("/productService/addOrUpdateProduct", formData).then((res) => {
         if (res && res.status === 201) {
           this.$store.dispatch(
             "pushGoodNews",
@@ -251,7 +259,7 @@ export default {
             (this.details.match(/\n/g) || []).length -
             1)
       );
-    }
-  }
+    },
+  },
 };
 </script>

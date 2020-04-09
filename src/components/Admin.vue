@@ -5,15 +5,18 @@
         <router-link
           to="/admin/users"
           class="block p-4 border-b border-gray-400 text-lg font-semibold"
-        >Users</router-link>
+          >Users</router-link
+        >
         <router-link
           to="/admin/products"
           class="block p-4 border-b border-gray-400 text-lg font-semibold"
-        >Products</router-link>
+          >Products</router-link
+        >
         <router-link
           to="/admin/requests"
           class="block p-4 border-b border-gray-400 text-lg font-semibold"
-        >Requests</router-link>
+          >Requests</router-link
+        >
       </ul>
 
       <div class="p-10 w-full bg-gray-100">

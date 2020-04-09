@@ -53,12 +53,12 @@ export default {
     Footer,
     ContactUs,
     SignIn,
-    Notification
+    Notification,
   },
 
   beforeMount() {
     this.$store.dispatch("trySignOut");
-  }
+  },
 };
 </script>
 

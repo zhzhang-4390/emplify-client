@@ -2,7 +2,10 @@
   <div>
     <section class="flex items-center">
       <svg
-        @click="miniFormOpen = !miniFormOpen; $refs.email.focus()"
+        @click="
+          miniFormOpen = !miniFormOpen;
+          $refs.email.focus();
+        "
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         class="h-8 w-8 fill-current text-gray-800 cursor-pointer"
@@ -48,7 +51,9 @@
           @click="addUser()"
           class="py-2 rounded-lg bg-teal-400 cursor-pointer flex justify-center text-white font-semibold"
           style="width: 23%"
-        >Save</div>
+        >
+          Save
+        </div>
       </form>
     </section>
 
@@ -62,11 +67,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(user, index) in users" :key="index" :class="{ 'bg-gray-200': index % 2 !== 0 }">
+        <tr
+          v-for="(user, index) in users"
+          :key="index"
+          :class="{ 'bg-gray-200': index % 2 !== 0 }"
+        >
           <td class="py-2 px-4 border-2">{{ user.email }}</td>
           <td class="py-2 px-4 border-2">{{ user.role }}</td>
-          <td class="py-2 px-4 border-2">{{ new Date(user.createdAt).toLocaleString() }}</td>
-          <td class="py-2 px-4 border-2">{{ new Date(user.updatedAt).toLocaleString() }}</td>
+          <td class="py-2 px-4 border-2">
+            {{ new Date(user.createdAt).toLocaleString() }}
+          </td>
+          <td class="py-2 px-4 border-2">
+            {{ new Date(user.updatedAt).toLocaleString() }}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -83,31 +96,33 @@ export default {
       newUser: {
         email: null,
         password: null,
-        role: "buyer"
+        role: "buyer",
       },
-      users: []
+      users: [],
     };
   },
 
   created() {
-    axios.get("/userService/getAllUsers").then(res => (this.users = res.data));
+    axios
+      .get("/userService/getAllUsers")
+      .then((res) => (this.users = res.data));
   },
 
   methods: {
     addUser() {
-      axios.post("/userService/signUp", this.newUser).then(res => {
+      axios.post("/userService/signUp", this.newUser).then((res) => {
         if (res.status === 201) {
           this.$store.dispatch("pushGoodNews", "Signed up successfully!");
 
           axios
             .get("/userService/getAllUsers")
-            .then(res => (this.users = res.data));
+            .then((res) => (this.users = res.data));
 
           this.newUser.email = null;
           this.newUser.password = null;
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>

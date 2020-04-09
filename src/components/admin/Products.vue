@@ -44,7 +44,9 @@
           <td class="py-2 px-4 border-2 text-sm">{{ product.location }}</td>
           <td class="py-2 px-4 border-2 text-sm">$ {{ product.price }}</td>
           <td class="py-2 px-4 border-2 text-sm">{{ product.owner.email }}</td>
-          <td class="py-2 px-4 border-2 text-sm">{{ new Date(product.updatedAt).toLocaleString() }}</td>
+          <td class="py-2 px-4 border-2 text-sm">
+            {{ new Date(product.updatedAt).toLocaleString() }}
+          </td>
         </router-link>
       </tbody>
     </table>
@@ -57,14 +59,14 @@ import axios from "axios";
 export default {
   data() {
     return {
-      products: []
+      products: [],
     };
   },
 
   created() {
-    axios.get("/productService/getAllProductsForTable").then(res => {
+    axios.get("/productService/getAllProductsForTable").then((res) => {
       this.products = res.data;
     });
-  }
+  },
 };
 </script>

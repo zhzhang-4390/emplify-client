@@ -27,6 +27,6 @@
 
 <script>
 export default {
-  props: ["rating"]
+  props: ["rating"],
 };
 </script>

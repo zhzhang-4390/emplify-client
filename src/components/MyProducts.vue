@@ -14,13 +14,21 @@
           >
             <path d="M13 10v6H7v-6H2l8-8 8 8h-5zM0 18h20v2H0v-2z" />
           </svg>
-          <span class="ml-4 text-lg font-semibold text-gray-600">Upload Product</span>
+          <span class="ml-4 text-lg font-semibold text-gray-600"
+            >Upload Product</span
+          >
         </div>
         <div class="h-64 w-full"></div>
       </router-link>
 
-      <div v-for="product in products" :key="product._id" class="ml-10 w-84 flex-shrink-0">
-        <router-link :to="{ path: '/upload-product', query: { name: product.name } }">
+      <div
+        v-for="product in products"
+        :key="product._id"
+        class="ml-10 w-84 flex-shrink-0"
+      >
+        <router-link
+          :to="{ path: '/upload-product', query: { name: product.name } }"
+        >
           <ProductCard :product="product" />
         </router-link>
       </div>
@@ -34,19 +42,19 @@ import ProductCard from "./ProductCard.vue";
 
 export default {
   components: {
-    ProductCard
+    ProductCard,
   },
 
   data() {
     return {
-      products: []
+      products: [],
     };
   },
 
   created() {
-    axios.get("/productService/getMyProducts").then(res => {
+    axios.get("/productService/getMyProducts").then((res) => {
       this.products = res.data;
     });
-  }
+  },
 };
 </script>

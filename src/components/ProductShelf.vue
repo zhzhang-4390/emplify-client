@@ -19,13 +19,15 @@
       <div class="py-10 flex overflow-x-auto">
         <div
           v-for="(product, index) in products.filter(
-            product => product.category === category
+            (product) => product.category === category
           )"
           :key="index"
           class="w-84 flex-shrink-0"
           :class="{ 'ml-10': index !== 0 }"
         >
-          <router-link :to="{ path: '/product-detail', query: { name: product.name } }">
+          <router-link
+            :to="{ path: '/product-detail', query: { name: product.name } }"
+          >
             <ProductCard :product="product" />
           </router-link>
         </div>
@@ -42,19 +44,19 @@ import ProductCard from "./ProductCard.vue";
 export default {
   components: {
     Animation,
-    ProductCard
+    ProductCard,
   },
 
   data() {
     return {
-      products: []
+      products: [],
     };
   },
 
   created() {
-    axios.get("/productService/getAllProductsForShelf").then(res => {
+    axios.get("/productService/getAllProductsForShelf").then((res) => {
       this.products = res.data;
     });
-  }
+  },
 };
 </script>

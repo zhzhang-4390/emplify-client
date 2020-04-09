@@ -22,8 +22,8 @@
 export default {
   data() {
     return {
-      showCloseButton: false
+      showCloseButton: false,
     };
-  }
+  },
 };
 </script>

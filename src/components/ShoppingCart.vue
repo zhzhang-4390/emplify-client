@@ -7,7 +7,9 @@
         class="w-84 flex-shrink-0"
         :class="{ 'ml-10': index !== 0 }"
       >
-        <router-link :to="{ path: '/product-detail', query: { name: product.name } }">
+        <router-link
+          :to="{ path: '/product-detail', query: { name: product.name } }"
+        >
           <ProductCard :product="product" />
         </router-link>
 
@@ -18,7 +20,9 @@
             viewBox="0 0 20 20"
             class="h-6 w-6 fill-current text-gray-400 hover:text-gray-600 transition-colors duration-300 cursor-pointer"
           >
-            <path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z" />
+            <path
+              d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"
+            />
           </svg>
         </div>
       </div>
@@ -37,10 +41,12 @@
 
       <div class="mt-6 flex items-center justify-end">
         <span class="text-xl font-semibold text-gray-700">Total</span>
-        <span class="ml-32 w-32 flex justify-center text-xl font-bold text-gray-700">
+        <span
+          class="ml-32 w-32 flex justify-center text-xl font-bold text-gray-700"
+        >
           $
           {{
-          products.reduce((total, current) => total + current.price, 0) * pax
+            products.reduce((total, current) => total + current.price, 0) * pax
           }}
         </span>
       </div>
@@ -48,7 +54,9 @@
       <div class="mt-6 flex items-center justify-end">
         <div
           class="py-2 w-32 rounded-lg bg-teal-400 hover:bg-teal-300 transition-colors duration-300 cursor-pointer flex justify-center text-lg font-semibold text-white"
-        >Place Order</div>
+        >
+          Place Order
+        </div>
       </div>
     </section>
   </div>
@@ -60,34 +68,34 @@ import ProductCard from "./ProductCard.vue";
 
 export default {
   components: {
-    ProductCard
+    ProductCard,
   },
 
   data() {
     return {
       products: [],
-      pax: 1
+      pax: 1,
     };
   },
 
   created() {
-    axios.get("/userService/getShoppingCart").then(res => {
+    axios.get("/userService/getShoppingCart").then((res) => {
       this.products = res.data;
     });
   },
 
   methods: {
     removeFromShoppingCart(_id) {
-      this.products = this.products.filter(product => product._id !== _id);
+      this.products = this.products.filter((product) => product._id !== _id);
       axios
         .post("/userService/removeFromShoppingCart", { _id: _id })
-        .then(res =>
+        .then((res) =>
           this.$store.dispatch(
             "updateShoppingCartSize",
             res.data.shoppingCartSize
           )
         );
-    }
-  }
+    },
+  },
 };
 </script>

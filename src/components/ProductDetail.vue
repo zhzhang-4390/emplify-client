@@ -2,22 +2,35 @@
   <div v-if="product" class="py-10 border-b-2 border-gray-600">
     <div class="flex">
       <section class="w-1/3 rounded-lg relative">
-        <img :src="product.frontImage" class="h-64 w-full object-cover rounded-t-lg" />
+        <img
+          :src="product.frontImage"
+          class="h-64 w-full object-cover rounded-t-lg"
+        />
 
         <div class="p-6 h-96 relative bg-white rounded-b-lg leading-loose">
           <div class="flex">
-            <h4 class="text-xl font-semibold text-gray-700">{{ product.name }}</h4>
-            <div class="absolute right-0 p-4 bg-teal-400 rounded-l-lg shadow-lg">
-              <span class="text-xl font-semibold text-white">$ {{ product.price }}</span>
+            <h4 class="text-xl font-semibold text-gray-700">
+              {{ product.name }}
+            </h4>
+            <div
+              class="absolute right-0 p-4 bg-teal-400 rounded-l-lg shadow-lg"
+            >
+              <span class="text-xl font-semibold text-white"
+                >$ {{ product.price }}</span
+              >
               <span class="ml-2 text-white">/pax</span>
             </div>
           </div>
 
           <div
             class="mt-2 pl-2 text-sm text-gray-600 font-semibold border-l-4 border-teal-400"
-          >{{ product.category }}</div>
+          >
+            {{ product.category }}
+          </div>
 
-          <p class="mt-4 h-40 text-gray-600 text-justify overflow-y-auto">{{ product.description }}</p>
+          <p class="mt-4 h-40 text-gray-600 text-justify overflow-y-auto">
+            {{ product.description }}
+          </p>
 
           <div class="mt-12 justify-between flex items-center">
             <svg
@@ -29,7 +42,7 @@
                 'text-gray-400': !isFavourite,
                 'hover:text-gray-300': !isFavourite,
                 'text-teal-400': isFavourite,
-                'hover:text-teal-300': isFavourite
+                'hover:text-teal-300': isFavourite,
               }"
             >
               <path
@@ -41,12 +54,16 @@
               v-if="!isInShoppingCart"
               @click="addToShoppingCart()"
               class="py-1 px-4 rounded-lg bg-teal-400 hover:bg-teal-300 transition-colors duration-300 cursor-pointer flex justify-center font-semibold text-white"
-            >Add to Cart</div>
+            >
+              Add to Cart
+            </div>
 
             <div
               v-else
               class="py-1 px-4 rounded-lg bg-gray-400 cursor-not-allowed flex justify-center font-semibold text-white"
-            >Already in Cart</div>
+            >
+              Already in Cart
+            </div>
           </div>
         </div>
       </section>
@@ -65,10 +82,12 @@
               class="h-32 w-32 fill-current text-white transition-opacity duration-300 cursor-pointer"
               :class="{
                 'opacity-0': !hoverOnBigImage,
-                'opacity-50': hoverOnBigImage
+                'opacity-50': hoverOnBigImage,
               }"
             >
-              <path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z" />
+              <path
+                d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"
+              />
             </svg>
             <svg
               @click="slideRight()"
@@ -77,7 +96,7 @@
               class="h-32 w-32 fill-current text-white transition-opacity duration-300 cursor-pointer"
               :class="{
                 'opacity-0': !hoverOnBigImage,
-                'opacity-50': hoverOnBigImage
+                'opacity-50': hoverOnBigImage,
               }"
             >
               <path
@@ -92,7 +111,7 @@
             :src="image"
             class="flex-shrink-0 h-124 w-full object-cover rounded-lg transform transition-transform duration-300"
             :style="{
-              '--transform-translate-x': `-${selectedImageIndex * 100}%`
+              '--transform-translate-x': `-${selectedImageIndex * 100}%`,
             }"
           />
         </div>
@@ -109,12 +128,16 @@
       </section>
     </div>
 
-    <div class="mt-8 p-8 w-full bg-white rounded-lg leading-loose text-gray-600 font-semibold">
+    <div
+      class="mt-8 p-8 w-full bg-white rounded-lg leading-loose text-gray-600 font-semibold"
+    >
       <p
         v-for="(detail, index) in product.details"
         :key="detail"
         :class="{ 'mt-8': index !== 0 }"
-      >{{ detail }}</p>
+      >
+        {{ detail }}
+      </p>
     </div>
   </div>
 </template>
@@ -130,26 +153,26 @@ export default {
       isInShoppingCart: null,
 
       hoverOnBigImage: false,
-      selectedImageIndex: 0
+      selectedImageIndex: 0,
     };
   },
 
   created() {
     axios
       .get(`/productService/getProductByName?name=${this.$route.query.name}`)
-      .then(res => {
+      .then((res) => {
         this.product = res.data;
 
         if (this.$store.getters.getUser) {
           axios
             .get(`/userService/isFavourite?_id=${this.product._id}`)
-            .then(res => {
+            .then((res) => {
               this.isFavourite = res.data;
             });
 
           axios
             .get(`/userService/isInShoppingCart?_id=${this.product._id}`)
-            .then(res => {
+            .then((res) => {
               this.isInShoppingCart = res.data;
             });
         }
@@ -175,7 +198,7 @@ export default {
         this.isInShoppingCart = true;
         axios
           .post("/userService/addToShoppingCart", { _id: this.product._id })
-          .then(res =>
+          .then((res) =>
             this.$store.dispatch(
               "updateShoppingCartSize",
               res.data.shoppingCartSize
@@ -196,7 +219,7 @@ export default {
       if (this.selectedImageIndex < this.product.images.length - 1) {
         this.selectedImageIndex++;
       }
-    }
-  }
+    },
+  },
 };
 </script>
