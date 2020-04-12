@@ -42,25 +42,11 @@
         class="mt-8 py-2 w-full outline-none border-b focus:border-teal-400"
       />
       <label class="mt-10 flex items-center">
-        <input
-          v-model="role"
-          type="radio"
-          name="role"
-          value="buyer"
-          class="h-6 w-6"
-        />
-        <span class="ml-4 text-gray-800"
-          >I'm looking for Team-Building / CSR activites</span
-        >
+        <input v-model="role" type="radio" name="role" value="buyer" class="h-6 w-6" />
+        <span class="ml-4 text-gray-800">I'm looking for Team-Building / CSR activites</span>
       </label>
       <label class="mt-6 flex items-center">
-        <input
-          v-model="role"
-          type="radio"
-          name="role"
-          value="seller"
-          class="h-6 w-6"
-        />
+        <input v-model="role" type="radio" name="role" value="seller" class="h-6 w-6" />
         <span class="ml-4 text-gray-800">I'm an activity / venue provider</span>
       </label>
       <div
@@ -75,11 +61,11 @@
 
 <script>
 import axios from "axios";
-import CloseButton from "./CloseButton.vue";
+import CloseButton from "./icons/CloseButton.vue";
 
 export default {
   components: {
-    CloseButton,
+    CloseButton
   },
 
   data() {
@@ -89,7 +75,7 @@ export default {
       email: null,
       contactNumber: null,
       requirement: null,
-      role: "buyer",
+      role: "buyer"
     };
   },
 
@@ -108,9 +94,9 @@ export default {
           email: this.email,
           contactNumber: this.contactNumber,
           requirement: this.requirement,
-          role: this.role,
+          role: this.role
         })
-        .then((res) => {
+        .then(res => {
           if (res.status === 201) {
             this.$store.dispatch(
               "pushGoodNews",
@@ -120,7 +106,7 @@ export default {
             this.$store.dispatch("pushBadNews", "Failed to submit request");
           }
         });
-    },
-  },
+    }
+  }
 };
 </script>
