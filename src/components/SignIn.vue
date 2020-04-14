@@ -23,7 +23,7 @@
         class="mt-8 py-4 px-6 w-full rounded-full outline-none border focus:border-teal-400"
       />
 
-      <SignUpRadioGroup v-if="!signInMode" v-model="role" class="mt-8" />
+      <RoleRadioGroup v-if="!signInMode" v-model="role" class="mt-8" />
 
       <div
         @click="signInMode ? signIn() : signUp()"
@@ -68,13 +68,13 @@
 import axios from "axios";
 import anime from "animejs/lib/anime.es.js";
 
-import CloseButton from "./icons/CloseButton";
-import SignUpRadioGroup from "./icons/SignUpRadioGroup.vue";
+import CloseButton from "./icons/CloseButton.vue";
+import RoleRadioGroup from "./icons/RoleRadioGroup.vue";
 
 export default {
   components: {
     CloseButton,
-    SignUpRadioGroup,
+    RoleRadioGroup,
   },
 
   data() {
