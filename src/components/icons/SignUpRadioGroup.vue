@@ -13,7 +13,7 @@
           class="h-4 w-4 rounded-full bg-teal-400 transform transition-transform duration-300"
           :class="{
             'scale-0': role !== value,
-            'scale-100': role === value
+            'scale-100': role === value,
           }"
         ></div>
       </div>
@@ -31,9 +31,9 @@ export default {
     return {
       options: {
         buyer: "I'm looking for Team-Building / CSR activites",
-        seller: "I'm an activity / venue provider"
-      }
+        seller: "I'm an activity / venue provider",
+      },
     };
-  }
+  },
 };
 </script>
