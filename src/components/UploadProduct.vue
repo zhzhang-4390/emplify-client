@@ -5,15 +5,34 @@
         <div class="flex items-center justify-center relative">
           <img
             :src="frontImagePreview"
-            class="h-64 w-full object-cover rounded-t-lg opacity-50"
+            class="h-64 w-full rounded-t-lg border-gray-800 opacity-50 object-cover"
+            :class="{ 'border border-b-0': !frontImagePreview }"
           />
-          <input
-            type="file"
-            ref="frontImage"
-            accept="image/*"
-            @change="addPreviewImage()"
-            class="absolute"
-          />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <label
+              for="upload-front-image"
+              class="py-2 px-4 rounded-lg border border-gray-800 cursor-pointer flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                class="h-6 w-6 fill-current text-gray-800"
+              >
+                <path
+                  d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
+                />
+              </svg>
+              <span class="ml-4 text-gray-800">Front Image</span>
+            </label>
+            <input
+              type="file"
+              ref="frontImage"
+              accept="image/*"
+              @change="addPreviewImage()"
+              class="hidden"
+              id="upload-front-image"
+            />
+          </div>
         </div>
 
         <div
@@ -68,9 +87,9 @@
       </section>
 
       <section class="ml-16 w-2/3">
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center relative">
           <div
-            class="h-124 w-full rounded-lg border-gray-400 flex overflow-x-hidden relative"
+            class="h-124 w-full rounded-lg border-gray-800 flex overflow-x-hidden relative"
             :class="{ border: previews.length === 0 }"
           >
             <img
@@ -84,7 +103,7 @@
             />
             <div
               v-if="previews.length !== 0"
-              class="absolute bottom-0 right-0 p-4 rounded-tl-lg bg-black opacity-50"
+              class="absolute bottom-0 right-0 z-10 p-4 rounded-tl-lg bg-black opacity-50"
             >
               <svg
                 @click="removeImage()"
@@ -98,17 +117,36 @@
               </svg>
             </div>
           </div>
-          <input
-            type="file"
-            ref="images"
-            accept="image/*"
-            class="absolute"
-            multiple
-            @change="addImages()"
-          />
+
+          <div class="absolute inset-0 flex items-center justify-center">
+            <label
+              for="upload-images"
+              class="py-2 px-4 rounded-lg border border-gray-800 cursor-pointer flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                class="h-6 w-6 fill-current text-gray-800"
+              >
+                <path
+                  d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
+                />
+              </svg>
+              <span class="ml-4 text-gray-800">Other Images</span>
+            </label>
+            <input
+              type="file"
+              ref="images"
+              accept="image/*"
+              multiple
+              @change="addImages()"
+              class="hidden"
+              id="upload-images"
+            />
+          </div>
         </div>
         <div
-          class="mt-4 h-32 w-full rounded-lg border-gray-400 flex overflow-x-auto"
+          class="mt-4 h-32 w-full rounded-lg border-gray-800 flex overflow-x-auto"
           :class="{ border: previews.length === 0 }"
         >
           <img
