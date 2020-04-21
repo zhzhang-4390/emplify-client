@@ -1,5 +1,5 @@
 module.exports = {
   devServer: {
-    proxy: "http://emplify-server.azurewebsites.net",
+    proxy: "http://13.251.126.166",
   },
 };
