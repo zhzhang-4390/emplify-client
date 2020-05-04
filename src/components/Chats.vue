@@ -1,6 +1,15 @@
 <template>
   <div class="py-10 border-b border-gray-600 flex">
-    <section class="h-124 w-1/4 rounded-lg bg-gray-300 overflow-y-auto">
+    <section
+      class="h-124 w-1/4 rounded-lg bg-gray-300 relative overflow-y-auto"
+    >
+      <div
+        v-if="$store.getters.getRooms.length === 0"
+        class="absolute inset-0 flex items-center justify-center text-lg text-gray-600"
+      >
+        You currently don't have any contact
+      </div>
+
       <div
         v-for="(room, index) in $store.getters.getRooms"
         :key="index"
@@ -21,7 +30,16 @@
       </div>
     </section>
 
-    <section class="ml-4 h-124 w-3/4 rounded-lg bg-gray-300 overflow-auto">
+    <section
+      class="ml-4 h-124 w-3/4 rounded-lg bg-gray-300 relative overflow-auto"
+    >
+      <div
+        v-if="$store.getters.getCurrentRoomIndex === null"
+        class="absolute inset-0 flex items-center justify-center text-lg text-gray-600"
+      >
+        Select a chat to start messaging
+      </div>
+
       <div
         v-if="$store.getters.getCurrentRoomIndex !== null"
         class="px-8 h-full bg-gray-100 flex flex-col justify-between"
