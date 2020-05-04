@@ -1,9 +1,9 @@
 <template>
   <div
-    class="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300 relative"
+    class="rounded-lg shadow-xl transform hover:scale-110 transition-transform duration-200 relative"
   >
     <img
-      :src="product.frontImage"
+      src="https://images.unsplash.com/photo-1588531606690-b4149d2da7bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80"
       class="h-56 w-84 object-cover rounded-t-lg"
     />
     <div

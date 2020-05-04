@@ -18,7 +18,7 @@
       <ContactUs
         v-if="$store.getters.showContactForm"
         class="fixed z-30 inset-0"
-        style="transform-origin: 78% 7%"
+        style="transform-origin: 100% 0%"
       />
     </transition>
 
@@ -26,7 +26,7 @@
       <SignIn
         v-if="$store.getters.showSignInForm"
         class="fixed z-30 inset-0"
-        style="transform-origin: 88% 7%"
+        style="transform-origin: 100% 0%"
       />
     </transition>
 
@@ -56,8 +56,11 @@ export default {
     Notification,
   },
 
-  beforeMount() {
+  created() {
     this.$store.dispatch("trySignOut");
+    if (this.$store.getters.getUser) {
+      this.$socket.client.connect();
+    }
   },
 };
 </script>

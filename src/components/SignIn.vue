@@ -9,10 +9,19 @@
       <input
         v-model="email"
         ref="email"
-        @keyup.enter="$refs.password.focus()"
+        @keyup.enter="signInMode ? $refs.password.focus() : $refs.name.focus()"
         type="text"
         placeholder="Email"
         class="py-4 px-6 w-full rounded-full outline-none border focus:border-teal-400"
+      />
+      <input
+        v-if="!signInMode"
+        v-model="name"
+        ref="name"
+        @keyup.enter="$refs.password.focus()"
+        type="text"
+        placeholder="Name"
+        class="mt-8 py-4 px-6 w-full rounded-full outline-none border focus:border-teal-400"
       />
       <input
         v-model="password"
@@ -82,6 +91,7 @@ export default {
       signInMode: true,
 
       email: null,
+      name: null,
       password: null,
       role: "buyer",
     };
@@ -107,11 +117,14 @@ export default {
           if (res.status === 200) {
             this.$store.dispatch("signIn", res.data);
             this.$store.dispatch("hideSignInForm");
+
             if (res.data.role === "seller") {
               this.$router.push("/my-products");
             } else if (res.data.role === "admin") {
               this.$router.push("/admin/users");
             }
+
+            this.$socket.client.connect();
           }
         })
         .catch((err) => {
@@ -124,6 +137,7 @@ export default {
       axios
         .post("/userService/signUp", {
           email: this.email,
+          name: this.name,
           password: this.password,
           role: this.role,
         })

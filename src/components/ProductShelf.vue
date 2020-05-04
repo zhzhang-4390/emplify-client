@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="h-screen w-full">
-      <Animation style="margin-top: 10rem" />
+      <Animation style="margin-top: 12rem" />
     </section>
 
     <section
@@ -10,8 +10,8 @@
       class="pb-4 border-b-2 border-gray-600"
     >
       <div class="ml-1 mt-8 leading-loose">
-        <h3 class="text-xl font-bold">{{ category }}</h3>
-        <h4>
+        <h3 class="text-xl font-semibold">{{ category }}</h3>
+        <h4 class="text-gray-800">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           Reprehenderit expedita aperiam error doloribus dolore, non porro
         </h4>

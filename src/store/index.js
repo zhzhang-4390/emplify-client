@@ -5,6 +5,7 @@ import createPersistedState from "vuex-persistedstate";
 import user from "./modules/user";
 import notification from "./modules/notification";
 import floatingForm from "./modules/floating-form";
+import chats from "./modules/chats";
 
 Vue.use(Vuex);
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     user,
     notification,
     floatingForm,
+    chats,
   },
 
   state: {

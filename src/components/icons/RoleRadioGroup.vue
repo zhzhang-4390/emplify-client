@@ -18,7 +18,7 @@
         ></div>
       </div>
 
-      <span class="ml-4">{{ description }}</span>
+      <span class="ml-4 text-gray-700">{{ description }}</span>
     </div>
   </div>
 </template>

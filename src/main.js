@@ -1,5 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import VueSocketIOExt from "vue-socket.io-extended";
+import io from "socket.io-client";
+
 import App from "./App.vue";
 import store from "./store";
 import "./assets/css/tailwind.css";
@@ -10,6 +13,7 @@ import UploadProduct from "./components/UploadProduct.vue";
 import MyProducts from "./components/MyProducts.vue";
 import Favourites from "./components/Favourites.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
+import Chats from "./components/Chats.vue";
 import ChangePassword from "./components/ChangePassword.vue";
 import Admin from "./components/Admin.vue";
 import Users from "./components/admin/Users.vue";
@@ -17,6 +21,9 @@ import Products from "./components/admin/Products.vue";
 import Requests from "./components/admin/Requests.vue";
 
 Vue.use(VueRouter);
+Vue.use(VueSocketIOExt, io("localhost:3000", { autoConnect: false }), {
+  store,
+});
 
 const router = new VueRouter({
   routes: [
@@ -43,6 +50,10 @@ const router = new VueRouter({
     {
       path: "/shopping-cart",
       component: ShoppingCart,
+    },
+    {
+      path: "/chats",
+      component: Chats,
     },
     {
       path: "/change-password",

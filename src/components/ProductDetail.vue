@@ -28,41 +28,58 @@
             {{ product.category }}
           </div>
 
-          <p class="mt-4 h-40 text-gray-600 text-justify overflow-y-auto">
+          <p class="mt-4 h-32 text-gray-600 text-justify overflow-y-auto">
             {{ product.description }}
           </p>
 
-          <div class="mt-12 justify-between flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              @click="toggleFavourite()"
-              class="h-8 w-8 fill-current transition-colors duration-300 cursor-pointer"
-              :class="{
-                'text-gray-400': !isFavourite,
-                'hover:text-gray-300': !isFavourite,
-                'text-teal-400': isFavourite,
-                'hover:text-teal-300': isFavourite,
-              }"
-            >
-              <path
-                d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"
-              />
-            </svg>
-
+          <div class="mt-8 flex items-end justify-between">
             <div
-              v-if="!isInShoppingCart"
-              @click="addToShoppingCart()"
-              class="py-1 px-4 rounded-lg bg-teal-400 hover:bg-teal-300 transition-colors duration-300 cursor-pointer flex justify-center font-semibold text-white"
+              @click="contactVendor()"
+              class="text-gray-800 hover:text-gray-600 transition-colors duration-300 cursor-pointer flex items-center"
             >
-              Add to Cart
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                class="mt-1 h-4 w-4 fill-current"
+              >
+                <path
+                  d="M10 15l-4 4v-4H2a2 2 0 0 1-2-2V3c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8zM5 7v2h2V7H5zm4 0v2h2V7H9zm4 0v2h2V7h-2z"
+                />
+              </svg>
+
+              <span class="ml-2 font-semibold">Contact Vendor</span>
             </div>
 
-            <div
-              v-else
-              class="py-1 px-4 rounded-lg bg-gray-400 cursor-not-allowed flex justify-center font-semibold text-white"
-            >
-              Already in Cart
+            <div class="flex flex-col items-end">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                @click="toggleFavourite()"
+                class="h-8 w-8 fill-current transition-colors duration-300 cursor-pointer"
+                :class="{
+                  'text-gray-400 hover:text-gray-300': !isFavourite,
+                  'text-teal-400 hover:text-teal-300': isFavourite,
+                }"
+              >
+                <path
+                  d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"
+                />
+              </svg>
+
+              <div
+                v-if="!isInShoppingCart"
+                @click="addToShoppingCart()"
+                class="mt-4 py-1 px-4 rounded-lg bg-teal-400 hover:bg-teal-300 transition-colors duration-300 cursor-pointer flex justify-center font-semibold text-white"
+              >
+                Add to Cart
+              </div>
+
+              <div
+                v-else
+                class="mt-4 py-1 px-4 rounded-lg bg-gray-400 cursor-not-allowed flex justify-center font-semibold text-white"
+              >
+                Already in Cart
+              </div>
             </div>
           </div>
         </div>
@@ -180,6 +197,28 @@ export default {
   },
 
   methods: {
+    contactVendor() {
+      if (this.$store.getters.getUser) {
+        const rooms = this.$store.getters.getRooms;
+        const roomIndex = rooms.findIndex(
+          (room) => room.isPrivate && room.users.includes(this.product.owner)
+        );
+
+        if (roomIndex === -1) {
+          this.$socket.client.emit("contact", {
+            from: this.$store.getters.getUser._id,
+            to: this.product.owner,
+          });
+        } else {
+          this.$store.dispatch("setCurrentRoomIndex", roomIndex);
+        }
+
+        this.$router.push("/chats");
+      } else {
+        this.$store.dispatch("showSignInForm");
+      }
+    },
+
     toggleFavourite() {
       if (this.$store.getters.getUser) {
         this.isFavourite = !this.isFavourite;

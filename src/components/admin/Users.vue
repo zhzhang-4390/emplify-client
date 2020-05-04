@@ -26,7 +26,15 @@
           type="text"
           placeholder="Email"
           class="py-2 px-3 rounded-lg bg-gray-300 outline-none"
-          style="width: 23%"
+          style="width: 18%"
+        />
+
+        <input
+          v-model="newUser.name"
+          type="text"
+          placeholder="Name"
+          class="py-2 px-3 rounded-lg bg-gray-300 outline-none"
+          style="width: 18%"
         />
 
         <input
@@ -34,13 +42,13 @@
           type="password"
           placeholder="Password"
           class="py-2 px-3 rounded-lg bg-gray-300 outline-none"
-          style="width: 23%"
+          style="width: 18%"
         />
 
         <select
           v-model="newUser.role"
           class="py-2 px-3 rounded-lg bg-gray-300 text-gray-600 font-semibold outline-none"
-          style="width: 23%"
+          style="width: 18%"
         >
           <option value="buyer">Buyer</option>
           <option value="seller">Seller</option>
@@ -50,7 +58,7 @@
         <div
           @click="addUser()"
           class="py-2 rounded-lg bg-teal-400 cursor-pointer flex justify-center text-white font-semibold"
-          style="width: 23%"
+          style="width: 18%"
         >
           Save
         </div>
@@ -61,6 +69,7 @@
       <thead>
         <tr>
           <th class="py-2 bg-gray-200 border-2">Email</th>
+          <th class="py-2 bg-gray-200 border-2">Name</th>
           <th class="py-2 bg-gray-200 border-2">Role</th>
           <th class="py-2 bg-gray-200 border-2">Created At</th>
           <th class="py-2 bg-gray-200 border-2">Updated At</th>
@@ -73,6 +82,7 @@
           :class="{ 'bg-gray-200': index % 2 !== 0 }"
         >
           <td class="py-2 px-4 border-2">{{ user.email }}</td>
+          <td class="py-2 px-4 border-2">{{ user.name }}</td>
           <td class="py-2 px-4 border-2">{{ user.role }}</td>
           <td class="py-2 px-4 border-2">
             {{ new Date(user.createdAt).toLocaleString() }}
@@ -95,6 +105,7 @@ export default {
       miniFormOpen: false,
       newUser: {
         email: null,
+        name: null,
         password: null,
         role: "buyer",
       },
@@ -119,6 +130,7 @@ export default {
             .then((res) => (this.users = res.data));
 
           this.newUser.email = null;
+          this.newUser.name = null;
           this.newUser.password = null;
         }
       });
