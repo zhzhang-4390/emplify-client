@@ -1,5 +1,5 @@
 <template>
-  <div v-if="product" class="py-10 border-b-2 border-gray-600">
+  <div v-if="product" class="py-10 border-b border-gray-600">
     <div class="flex">
       <section class="w-1/3 rounded-lg relative">
         <img

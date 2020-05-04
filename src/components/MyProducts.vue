@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="py-10 flex border-b-2 border-gray-600 overflow-x-auto">
+    <div class="py-10 flex border-b border-gray-600 overflow-x-auto">
       <router-link
         to="/upload-product"
         class="w-84 flex-shrink-0 rounded-lg shadow-lg border-2 relative"

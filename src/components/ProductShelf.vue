@@ -7,7 +7,7 @@
     <section
       v-for="category in $store.getters.getCategories"
       :key="category"
-      class="pb-4 border-b-2 border-gray-600"
+      class="pb-4 border-b border-gray-600"
     >
       <div class="ml-1 mt-8 leading-loose">
         <h3 class="text-xl font-semibold">{{ category }}</h3>

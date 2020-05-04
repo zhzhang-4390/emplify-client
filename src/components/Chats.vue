@@ -1,5 +1,5 @@
 <template>
-  <div class="py-10 border-b-2 border-gray-600 flex">
+  <div class="py-10 border-b border-gray-600 flex">
     <section class="h-124 w-1/4 rounded-lg bg-gray-300 overflow-y-auto">
       <div
         v-for="(room, index) in $store.getters.getRooms"

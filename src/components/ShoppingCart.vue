@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="py-10 flex overflow-x-auto border-b-2 border-gray-600">
+    <section class="py-10 flex overflow-x-auto border-b border-gray-600">
       <div
         v-for="(product, index) in products"
         :key="index"
@@ -28,7 +28,7 @@
       </div>
     </section>
 
-    <section class="py-8 border-b-2 border-gray-600">
+    <section class="py-8 border-b border-gray-600">
       <div class="flex items-center justify-end">
         <span class="text-xl font-semibold text-gray-700">Pax</span>
         <input

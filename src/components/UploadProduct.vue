@@ -1,5 +1,5 @@
 <template>
-  <div class="py-10 border-b-2 border-gray-600">
+  <div class="py-10 border-b border-gray-600">
     <div class="flex">
       <section class="w-1/3 rounded-lg">
         <div class="flex items-center justify-center relative">
