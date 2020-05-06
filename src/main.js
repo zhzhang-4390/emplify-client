@@ -21,7 +21,7 @@ import Products from "./components/admin/Products.vue";
 import Requests from "./components/admin/Requests.vue";
 
 Vue.use(VueRouter);
-Vue.use(VueSocketIOExt, io("18.140.52.250:3000", { autoConnect: false }), {
+Vue.use(VueSocketIOExt, io("/", { path: "/chatService", autoConnect: false }), {
   store,
 });
 
