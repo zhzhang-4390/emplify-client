@@ -150,6 +150,7 @@ export default {
             this.$store.getters.getCurrentRoomIndex
           ]._id,
           from: this.$store.getters.getUser._id,
+          type: "text",
           content: this.input,
           createdAt: Date.now(),
           updatedAt: Date.now(),
