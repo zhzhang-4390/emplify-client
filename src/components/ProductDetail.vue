@@ -199,20 +199,7 @@ export default {
   methods: {
     contactVendor() {
       if (this.$store.getters.getUser) {
-        const rooms = this.$store.getters.getRooms;
-        const roomIndex = rooms.findIndex(
-          (room) => room.isPrivate && room.users.includes(this.product.owner)
-        );
-
-        if (roomIndex === -1) {
-          this.$socket.client.emit("contact", {
-            from: this.$store.getters.getUser._id,
-            to: this.product.owner,
-          });
-        } else {
-          this.$store.dispatch("setCurrentRoomIndex", roomIndex);
-        }
-
+        this.$store.dispatch("initChat", this.product.owner);
         this.$router.push("/chats");
       } else {
         this.$store.dispatch("showSignInForm");

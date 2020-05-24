@@ -57,6 +57,7 @@ export default {
   },
 
   created() {
+    this.$store.dispatch("setCurrentRoomIndex", null);
     this.$store.dispatch("trySignOut");
     if (this.$store.getters.getUser) {
       this.$socket.client.connect();

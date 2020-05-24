@@ -23,7 +23,7 @@
 
         <div
           v-if="$store.getters.getShoppingCartSize !== 0"
-          class="ml-2 h-5 w-5 rounded-full bg-teal-400 flex items-center justify-center text-sm text-white"
+          class="ml-2 h-5 w-5 rounded-full bg-teal-400 flex items-center justify-center text-xs text-white"
         >
           {{ $store.getters.getShoppingCartSize }}
         </div>
@@ -53,12 +53,18 @@
         >
       </li>
 
-      <li v-if="$store.getters.getUser" class="ml-16">
+      <li v-if="$store.getters.getUser" class="ml-16 flex items-center">
         <router-link
           to="/chats"
           class="font-semibold hover:text-gray-600 cursor-pointer"
           >Chats</router-link
         >
+        <div
+          v-if="$store.getters.getUnreadMessageCount !== 0"
+          class="ml-2 h-5 w-5 rounded-full bg-teal-400 flex items-center justify-center text-xs text-white"
+        >
+          {{ $store.getters.getUnreadMessageCount }}
+        </div>
       </li>
 
       <li class="ml-16">
